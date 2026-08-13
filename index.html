@@ -79,6 +79,7 @@
         <div class="device-box">
           <div class="top">
             <label class="chk"><input type="checkbox" id="showLaptop" checked> 💻 ল্যাপটপ</label>
+            <button class="btn secondary small" id="frontLaptop" style="width:auto;margin:0;padding:6px 10px;">সামনে আনো</button>
           </div>
           <div class="drop" id="dropLaptop">স্ক্রিনশট আপলোড করো
             <input type="file" id="fileLaptop" accept="image/*">
@@ -88,6 +89,7 @@
         <div class="device-box">
           <div class="top">
             <label class="chk"><input type="checkbox" id="showPhone" checked> 📱 মোবাইল</label>
+            <button class="btn secondary small" id="frontPhone" style="width:auto;margin:0;padding:6px 10px;">সামনে আনো</button>
           </div>
           <div class="drop" id="dropPhone">স্ক্রিনশট আপলোড করো
             <input type="file" id="filePhone" accept="image/*">
@@ -97,11 +99,13 @@
         <div class="device-box">
           <div class="top">
             <label class="chk"><input type="checkbox" id="showTablet"> 📲 ট্যাবলেট</label>
+            <button class="btn secondary small" id="frontTablet" style="width:auto;margin:0;padding:6px 10px;">সামনে আনো</button>
           </div>
           <div class="drop" id="dropTablet">স্ক্রিনশট আপলোড করো
             <input type="file" id="fileTablet" accept="image/*">
           </div>
         </div>
+        <div class="hint">"সামনে আনো" চাপলে সেই ডিভাইসটা অন্যদের উপরে (সবচেয়ে সামনে) চলে আসবে — যেমন ট্যাব সামনে চাইলে ট্যাবের বাটনে চাপো।</div>
 
         <div class="field">
           <label>ডিভাইস সাইজ <span class="range-val" id="deviceScaleVal">100%</span></label>
@@ -119,7 +123,42 @@
           </div>
         </div>
         <div class="field"><label>ছোট সাবটাইটেল / URL (ঐচ্ছিক)</label><input type="text" id="topSub" placeholder="www.cleanroomac.bd"></div>
+        <div class="row2">
+          <div class="field">
+            <label>সাবটাইটেল ফন্ট</label>
+            <select id="mockSubFont">
+              <option value="Poppins" selected>Poppins</option>
+              <option value="Arial">Arial</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Verdana">Verdana</option>
+            </select>
+          </div>
+          <div class="field"><label>সাবটাইটেল কালার</label><input type="color" id="mockSubColor" value="#ffffff"></div>
+        </div>
+        <div class="field">
+          <label>সাবটাইটেল সাইজ <span class="range-val" id="mockSubSizeVal">24px</span></label>
+          <input type="range" id="mockSubSize" min="12" max="40" value="24">
+        </div>
+
         <div class="field"><label>বড় হেডলাইন</label><input type="text" id="topHead" placeholder="Cleanroom AC"></div>
+        <div class="row2">
+          <div class="field">
+            <label>হেডলাইন ফন্ট</label>
+            <select id="mockHeadFont">
+              <option value="Anton" selected>Anton (বোল্ড কন্ডেন্সড)</option>
+              <option value="Poppins">Poppins</option>
+              <option value="Arial Black">Arial Black</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Impact">Impact</option>
+            </select>
+          </div>
+          <div class="field"><label>হেডলাইন কালার</label><input type="color" id="mockHeadColor" value="#ffffff"></div>
+        </div>
+        <div class="field">
+          <label>হেডলাইন সাইজ <span class="range-val" id="mockHeadSizeVal">64px</span></label>
+          <input type="range" id="mockHeadSize" min="28" max="100" value="64">
+        </div>
+
         <div class="field"><label>ব্রাউজার URL বার (ল্যাপটপ স্ক্রিনে)</label><input type="text" id="urlBar1" placeholder="www.cleanroomac.bd"></div>
 
         <h2 style="margin-top:18px;">৩. ব্যাকগ্রাউন্ড</h2>
@@ -207,7 +246,62 @@ Categorywise Management</textarea></div>
             <option value="dark">ডার্ক নেভি</option>
           </select>
         </div>
-        <button class="btn" id="renderSlideBtn">🎨 স্লাইড তৈরি করো</button>
+
+        <h2 style="margin-top:16px;">✍️ টেক্সট স্টাইল</h2>
+        <div class="row2">
+          <div class="field">
+            <label>হেডলাইন ফন্ট</label>
+            <select id="headingFont">
+              <option value="Anton" selected>Anton (বোল্ড কন্ডেন্সড)</option>
+              <option value="Poppins">Poppins</option>
+              <option value="Arial Black">Arial Black</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Impact">Impact</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>হেডলাইন কালার</label>
+            <input type="color" id="headingColor" value="#0f2e52">
+          </div>
+        </div>
+        <div class="field">
+          <label>হেডলাইন সাইজ <span class="range-val" id="headingSizeVal">50px</span></label>
+          <input type="range" id="headingSize" min="32" max="72" value="50">
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label>বুলেট/বডি ফন্ট</label>
+            <select id="bodyFont">
+              <option value="Poppins" selected>Poppins</option>
+              <option value="Arial">Arial</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Verdana">Verdana</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>বুলেট কালার</label>
+            <input type="color" id="bulletColor" value="#0f2e52">
+          </div>
+        </div>
+        <div class="field">
+          <label>বুলেট টেক্সট সাইজ <span class="range-val" id="bulletSizeVal">26px</span></label>
+          <input type="range" id="bulletSize" min="16" max="34" value="26">
+        </div>
+        <div class="field">
+          <label>URL টেক্সট সাইজ <span class="range-val" id="urlSizeVal">25px</span></label>
+          <input type="range" id="urlSize" min="14" max="32" value="25">
+        </div>
+
+        <h2 style="margin-top:16px;">🖼️ ইমেজ সাইজ</h2>
+        <div class="field">
+          <label>মকআপ ইমেজ বড়/ছোট <span class="range-val" id="imgScaleVal">100%</span></label>
+          <input type="range" id="imgScale" min="50" max="160" value="100">
+        </div>
+        <button class="btn secondary small" id="resetImgBtn">↺ ইমেজ পজিশন/সাইজ রিসেট করো</button>
+        <div class="hint">প্রিভিউতে সরাসরি ছবিতে ক্লিক করে ধরে টেনে জায়গা বদলাতে পারবে।</div>
+
+        <button class="btn" id="renderSlideBtn" style="margin-top:14px;">🎨 স্লাইড তৈরি করো</button>
       </div>
       <div class="preview-wrap">
         <canvas id="canvas2" width="1456" height="816"></canvas>
@@ -290,6 +384,16 @@ let bgImage=null, bgTintOpacity=0;
 let deviceScale=1.0;
 let mockupResultDataURL=null;
 let lastRects={}; // hit-test boxes after each render, in canvas px
+let zOrder=['tablet','laptop','phone']; // back -> front draw order
+
+function bringToFront(key){
+  zOrder = zOrder.filter(k=>k!==key);
+  zOrder.push(key);
+  renderMockup();
+}
+document.getElementById('frontLaptop').addEventListener('click', ()=>bringToFront('laptop'));
+document.getElementById('frontPhone').addEventListener('click', ()=>bringToFront('phone'));
+document.getElementById('frontTablet').addEventListener('click', ()=>bringToFront('tablet'));
 
 /* tabs */
 document.querySelectorAll('.tab-btn').forEach(btn=>{
@@ -340,6 +444,7 @@ document.getElementById('deviceScale').addEventListener('input', e=>{
 });
 document.getElementById('resetPosBtn').addEventListener('click', ()=>{
   devices.laptop.override=null; devices.phone.override=null; devices.tablet.override=null;
+  zOrder=['tablet','laptop','phone'];
   renderMockup();
 });
 document.getElementById('layoutSelect').addEventListener('click', e=>{
@@ -349,6 +454,24 @@ document.getElementById('layoutSelect').addEventListener('click', e=>{
 });
 ['topSub','topHead','urlBar1'].forEach(id=>document.getElementById(id).addEventListener('input', renderMockup));
 document.getElementById('renderMockupBtn').addEventListener('click', renderMockup);
+
+/* mockup text typography */
+let mockHeadFont='Anton', mockHeadSize=64, mockHeadColor='#ffffff';
+let mockSubFont='Poppins', mockSubSize=24, mockSubColor='#ffffff';
+document.getElementById('mockHeadFont').addEventListener('change', e=>{ mockHeadFont=e.target.value; renderMockup(); });
+document.getElementById('mockHeadColor').addEventListener('input', e=>{ mockHeadColor=e.target.value; renderMockup(); });
+document.getElementById('mockHeadSize').addEventListener('input', e=>{
+  mockHeadSize=+e.target.value;
+  document.getElementById('mockHeadSizeVal').textContent=mockHeadSize+'px';
+  renderMockup();
+});
+document.getElementById('mockSubFont').addEventListener('change', e=>{ mockSubFont=e.target.value; renderMockup(); });
+document.getElementById('mockSubColor').addEventListener('input', e=>{ mockSubColor=e.target.value; renderMockup(); });
+document.getElementById('mockSubSize').addEventListener('input', e=>{
+  mockSubSize=+e.target.value;
+  document.getElementById('mockSubSizeVal').textContent=mockSubSize+'px';
+  renderMockup();
+});
 
 /* background image */
 const dropBgImg=document.getElementById('dropBgImg'), fileBgImg=document.getElementById('fileBgImg');
@@ -462,11 +585,19 @@ function paintBackground(ctx,W,H){
 
 /* ================= device rendering ================= */
 function groundShadow(ctx,cx,y,w,h,alpha){
+  const a=alpha!=null?alpha:0.32;
+  // wide soft ambient shadow
   const g=ctx.createRadialGradient(cx,y,2,cx,y,w/2);
-  g.addColorStop(0,`rgba(10,15,25,${alpha!=null?alpha:0.32})`);
+  g.addColorStop(0,`rgba(10,15,25,${a*0.55})`);
   g.addColorStop(1,'rgba(10,15,25,0)');
   ctx.fillStyle=g;
   ctx.beginPath(); ctx.ellipse(cx,y,w/2,h,0,0,Math.PI*2); ctx.fill();
+  // tight dark contact shadow right under the device
+  const g2=ctx.createRadialGradient(cx,y,1,cx,y,w*0.22);
+  g2.addColorStop(0,`rgba(5,8,14,${a})`);
+  g2.addColorStop(1,'rgba(5,8,14,0)');
+  ctx.fillStyle=g2;
+  ctx.beginPath(); ctx.ellipse(cx,y,w*0.22,h*0.55,0,0,Math.PI*2); ctx.fill();
 }
 function placeholderFill(ctx,x,y,w,h,r,emoji){
   const g=ctx.createLinearGradient(x,y,x+w,y+h);
@@ -675,33 +806,33 @@ function renderMockup(){
   const head=document.getElementById('topHead').value.trim();
   const url=document.getElementById('urlBar1').value.trim();
   const overBusyBg = bgImage || step1BgType!=='studio';
-  const textColor = overBusyBg ? '#ffffff' : '#171717';
   const lineColor = overBusyBg ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
 
   if(step1Layout==='top'){
     let ty=96;
     if(sub){
-      ctx.font='500 24px Poppins, sans-serif'; ctx.fillStyle=textColor; ctx.textAlign='center';
-      ctx.fillText(sub, W/2, ty); ty+=22;
+      ctx.font=`500 ${mockSubSize}px ${mockSubFont}, sans-serif`; ctx.fillStyle=mockSubColor; ctx.textAlign='center';
+      ctx.fillText(sub, W/2, ty); ty+=mockSubSize*0.9+8;
       ctx.strokeStyle=lineColor; ctx.lineWidth=1.5;
       ctx.beginPath(); ctx.moveTo(W/2-180,ty); ctx.lineTo(W/2+180,ty); ctx.stroke();
       ty+=58;
     } else ty+=20;
     if(head){
-      ctx.font='900 64px Anton, sans-serif'; ctx.fillStyle=textColor; ctx.textAlign='center';
-      ctx.fillText(head.toUpperCase(), W/2, ty+30);
+      ctx.font=`900 ${mockHeadSize}px ${mockHeadFont}, sans-serif`; ctx.fillStyle=mockHeadColor; ctx.textAlign='center';
+      ctx.fillText(head.toUpperCase(), W/2, ty+mockHeadSize*0.47);
     }
     ctx.textAlign='left';
   } else {
     let tx=90, ty=H*0.36;
     ctx.textAlign='left';
     if(head){
-      ctx.font='900 58px Anton, sans-serif'; ctx.fillStyle=textColor;
+      ctx.font=`900 ${Math.min(mockHeadSize,72)}px ${mockHeadFont}, sans-serif`; ctx.fillStyle=mockHeadColor;
       const words=head.toUpperCase().split(' ');
       let line='', ly=ty;
+      const lh=mockHeadSize*1.1;
       words.forEach(wd=>{
         const test=(line?line+' ':'')+wd;
-        if(ctx.measureText(test).width>W*0.36 && line){ ctx.fillText(line,tx,ly); line=wd; ly+=64; }
+        if(ctx.measureText(test).width>W*0.36 && line){ ctx.fillText(line,tx,ly); line=wd; ly+=lh; }
         else line=test;
       });
       if(line) ctx.fillText(line,tx,ly);
@@ -711,7 +842,7 @@ function renderMockup(){
       ctx.strokeStyle=lineColor; ctx.lineWidth=2;
       ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(tx+90,ty); ctx.stroke();
       ty+=42;
-      ctx.font='600 22px Poppins, sans-serif'; ctx.fillStyle=textColor;
+      ctx.font=`600 ${mockSubSize}px ${mockSubFont}, sans-serif`; ctx.fillStyle=mockSubColor;
       ctx.fillText(sub, tx, ty);
     }
   }
@@ -730,8 +861,8 @@ function renderMockup(){
   const single = shownKeys.length===1;
 
   lastRects={};
-  // draw order: tablet (back) -> laptop (mid) -> phone (front), but only among shown
-  const order=['tablet','laptop','phone'];
+  // draw order comes from zOrder (back -> front), user-adjustable via "সামনে আনো"
+  const order=zOrder;
   order.forEach(key=>{
     if(!devices[key].show) return;
     const def=DEFAULTS[key];
@@ -767,7 +898,7 @@ function canvasPoint(evt){
   return { x:(clientX-rect.left)*scaleX, y:(clientY-rect.top)*scaleY };
 }
 function hitTest(pt){
-  const order=['phone','tablet','laptop']; // front-to-back priority
+  const order=[...zOrder].reverse(); // front-to-back priority follows current stacking
   for(const key of order){
     if(!devices[key].show) continue;
     const r=lastRects[key]; if(!r) continue;
@@ -813,6 +944,41 @@ document.getElementById('download1').addEventListener('click', ()=>{
 
 /* ================= STEP 2 ================= */
 let step2Image=null, accentColor='#7b2fe0', customLogo=null;
+let headingFont='Anton', headingColor='#0f2e52', headingSize=50;
+let bodyFont='Poppins', bulletColor='#0f2e52', bulletSize=26, urlSize=25;
+let imgBoxScale=1.0, imgOverride=null;
+let lastImgRect=null;
+
+document.getElementById('headingFont').addEventListener('change', e=>{ headingFont=e.target.value; drawSlide(); });
+document.getElementById('headingColor').addEventListener('input', e=>{ headingColor=e.target.value; drawSlide(); });
+document.getElementById('headingSize').addEventListener('input', e=>{
+  headingSize=+e.target.value;
+  document.getElementById('headingSizeVal').textContent=headingSize+'px';
+  drawSlide();
+});
+document.getElementById('bodyFont').addEventListener('change', e=>{ bodyFont=e.target.value; drawSlide(); });
+document.getElementById('bulletColor').addEventListener('input', e=>{ bulletColor=e.target.value; drawSlide(); });
+document.getElementById('bulletSize').addEventListener('input', e=>{
+  bulletSize=+e.target.value;
+  document.getElementById('bulletSizeVal').textContent=bulletSize+'px';
+  drawSlide();
+});
+document.getElementById('urlSize').addEventListener('input', e=>{
+  urlSize=+e.target.value;
+  document.getElementById('urlSizeVal').textContent=urlSize+'px';
+  drawSlide();
+});
+document.getElementById('imgScale').addEventListener('input', e=>{
+  imgBoxScale=+e.target.value/100;
+  document.getElementById('imgScaleVal').textContent=e.target.value+'%';
+  drawSlide();
+});
+document.getElementById('resetImgBtn').addEventListener('click', ()=>{
+  imgBoxScale=1.0; imgOverride=null;
+  document.getElementById('imgScale').value=100;
+  document.getElementById('imgScaleVal').textContent='100%';
+  drawSlide();
+});
 const drop2=document.getElementById('drop2'), fileInput2=document.getElementById('fileInput2');
 drop2.addEventListener('click', ()=>fileInput2.click());
 fileInput2.addEventListener('change', e=>{
@@ -920,13 +1086,20 @@ function drawSlide(){
 
   const num=(document.getElementById('projNum').value||'').trim();
   const titleTxt=(document.getElementById('projTitle').value||'').trim().toUpperCase();
-  ctx.font='900 50px Anton, sans-serif'; ctx.textBaseline='alphabetic'; ctx.fillStyle=titleColor;
+  ctx.font=`900 ${headingSize}px ${headingFont}, sans-serif`; ctx.textBaseline='alphabetic'; ctx.fillStyle=headingColor;
+  const titleBaseline = 170+headingSize*0.8;
   const p1='PROJECT '+num+' - ';
-  ctx.fillText(p1, 60, 212);
+  ctx.fillText(p1, 60, titleBaseline);
   const w1=ctx.measureText(p1).width;
-  ctx.fillStyle=accentColor; ctx.fillText(titleTxt, 60+w1, 212);
+  ctx.fillStyle=accentColor; ctx.fillText(titleTxt, 60+w1, titleBaseline);
 
-  const boxX=60, boxY=250, boxW=W*0.44, boxH=H-350;
+  const baseBoxW=W*0.44, baseBoxH=H-350;
+  const boxW=baseBoxW*imgBoxScale, boxH=baseBoxH*imgBoxScale;
+  const defCX=60+baseBoxW/2, defCY=250+baseBoxH/2;
+  const boxCX = imgOverride ? imgOverride.cx : defCX;
+  const boxCY = imgOverride ? imgOverride.cy : defCY;
+  const boxX=boxCX-boxW/2, boxY=boxCY-boxH/2;
+  lastImgRect = {x:boxX, y:boxY, w:boxW, h:boxH};
   if(step2Image){
     const fit=fitContain(step2Image, boxW, boxH);
     const ix=boxX+(boxW-fit.w)/2, iy=boxY+(boxH-fit.h)/2;
@@ -939,19 +1112,19 @@ function drawSlide(){
     ctx.textAlign='left';
   }
 
-  const bx=W*0.52, byStart=300, lineGap=64;
+  const bx=W*0.52, byStart=300, lineGap=bulletSize+38;
   const bullets=(document.getElementById('bullets').value||'').split('\n').map(s=>s.trim()).filter(Boolean).slice(0,6);
-  ctx.font='700 26px Poppins, sans-serif';
+  ctx.font=`700 ${bulletSize}px ${bodyFont}, sans-serif`;
   bullets.forEach((b,i)=>{
     const by=byStart+i*lineGap;
     ctx.fillStyle=accentColor;
-    ctx.beginPath(); ctx.arc(bx+7,by-9,6,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle=titleColor; ctx.fillText(b, bx+26, by);
+    ctx.beginPath(); ctx.arc(bx+bulletSize*0.27, by-bulletSize*0.35, bulletSize*0.23, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle=bulletColor; ctx.fillText(b, bx+bulletSize+2, by);
   });
 
   const url=(document.getElementById('siteUrl').value||'').trim();
   if(url){
-    ctx.font='700 25px Poppins, sans-serif'; ctx.fillStyle=accentColor;
+    ctx.font=`700 ${urlSize}px ${bodyFont}, sans-serif`; ctx.fillStyle=accentColor;
     ctx.fillText(url, 60, H-40);
     const uw=ctx.measureText(url).width;
     ctx.strokeStyle=accentColor; ctx.lineWidth=2;
@@ -964,6 +1137,42 @@ function drawSlide(){
     ctx.textAlign='right'; ctx.fillText(pg, W-50, H-40); ctx.textAlign='left';
   }
 }
+/* drag-to-reposition the mockup image inside the slide */
+const canvas2 = document.getElementById('canvas2');
+let draggingImg=false, imgDragDX=0, imgDragDY=0;
+function canvasPoint2(evt){
+  const rect=canvas2.getBoundingClientRect();
+  const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+  const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+  const scaleX = canvas2.width/rect.width, scaleY = canvas2.height/rect.height;
+  return { x:(clientX-rect.left)*scaleX, y:(clientY-rect.top)*scaleY };
+}
+function startDrag2(evt){
+  if(!lastImgRect) return;
+  const pt=canvasPoint2(evt);
+  const r=lastImgRect;
+  if(pt.x<r.x || pt.x>r.x+r.w || pt.y<r.y || pt.y>r.y+r.h) return;
+  draggingImg=true;
+  imgDragDX = pt.x-(r.x+r.w/2);
+  imgDragDY = pt.y-(r.y+r.h/2);
+  canvas2.classList.add('dragging');
+  evt.preventDefault();
+}
+function moveDrag2(evt){
+  if(!draggingImg) return;
+  const pt=canvasPoint2(evt);
+  imgOverride = { cx: pt.x-imgDragDX, cy: pt.y-imgDragDY };
+  drawSlide();
+  evt.preventDefault();
+}
+function endDrag2(){ draggingImg=false; canvas2.classList.remove('dragging'); }
+canvas2.addEventListener('mousedown', startDrag2);
+window.addEventListener('mousemove', moveDrag2);
+window.addEventListener('mouseup', endDrag2);
+canvas2.addEventListener('touchstart', startDrag2, {passive:false});
+window.addEventListener('touchmove', moveDrag2, {passive:false});
+window.addEventListener('touchend', endDrag2);
+
 document.getElementById('download2').addEventListener('click', ()=>{
   drawSlide();
   const a=document.createElement('a');
